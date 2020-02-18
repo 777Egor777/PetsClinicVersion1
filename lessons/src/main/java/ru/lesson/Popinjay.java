@@ -11,8 +11,32 @@ public class Popinjay implements Pet {
      */
     private Pet pet;
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return this.pet.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+        if (obj instanceof Popinjay) {
+            Popinjay popinjay = (Popinjay)obj;
+            if (this.getName().equals(popinjay.getName())) {
+                result = true;
+            }
+        }
+
+        return result;
+    }
+
     public Popinjay(String name) {
-        Pet pet = new Animal(name, "попугай");
+        this.pet = new Animal(name, "попугай");
     }
 
     /**

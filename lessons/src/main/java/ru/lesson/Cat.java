@@ -11,8 +11,36 @@ public class Cat implements Pet {
      */
     private Pet pet;
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return this.pet.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+        if (obj instanceof Cat) {
+            Cat cat = (Cat)obj;
+            if (this.getName().equals(cat.getName())) {
+                result = true;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Конструктор
+     * @param name имя кота/кошки
+     */
     public Cat(String name) {
-        Pet pet = new Animal(name, "кот/кошка");
+        this.pet = new Animal(name, "кот/кошка");
     }
 
     /**
@@ -23,7 +51,7 @@ public class Cat implements Pet {
      */
     @Override
     public void setName(String name) {
-        pet.setName(name);
+        this.pet.setName(name);
     }
 
     /**
@@ -34,7 +62,7 @@ public class Cat implements Pet {
      */
     @Override
     public String getName() {
-        return pet.getName();
+        return this.pet.getName();
     }
 
     /**
@@ -45,6 +73,6 @@ public class Cat implements Pet {
      */
     @Override
     public String getTitle() {
-        return pet.getTitle();
+        return this.pet.getTitle();
     }
 }

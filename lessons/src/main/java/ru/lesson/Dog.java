@@ -11,8 +11,36 @@ public class Dog implements Pet {
      */
     private Pet pet;
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return this.pet.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+        if (obj instanceof Dog) {
+            Dog dog = (Dog)obj;
+            if (this.getName().equals(dog.getName())) {
+                result = true;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Конструктор
+     * @param name имя собаки
+     */
     public Dog(String name) {
-        Pet pet = new Animal(name, "собака");
+        this.pet = new Animal(name, "собака");
     }
 
     /**

@@ -7,14 +7,30 @@ package ru.lesson;
  */
 public class Animal implements Pet {
     /**
-     * Имя животного
+     * имя животного
      */
     private String name;
+
+    /**
+     * Returns a string representation of the object.
+     * It has format: title + " " + name
+     *
+     * @return a string representation of the object.
+     */
+    @Override
+    public String toString() {
+        return "Животное: " + this.title + " " + this.name;
+    }
 
     /**
      * Порода животного
      */
     private String title;
+
+    /**
+     * Конструктор
+     */
+    public Animal() {}
 
     /**
      * Конструктор

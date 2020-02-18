@@ -1,11 +1,28 @@
 package ru.lesson;
 
+import java.util.HashMap;
+
 /**
  * Клиент клиники
  * @author Geraskin Yegor
  * @version 1.1, 18.01.2020
  */
 public class Client {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        String result = "Имя: " + this.name + ".";
+
+        if (this.pet != null &&
+                !(this.pet instanceof Animal)) {
+            result += " " + this.pet;
+        }
+
+        return result;
+    }
+
     /**
      * Имя клиента
      */
@@ -38,6 +55,23 @@ public class Client {
      */
     public Pet getPet() {
         return this.pet;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+        if (obj instanceof Client) {
+            Client client = (Client)obj;
+            if (client.getName().equals(this.getName()) &&
+                client.getPet().equals(this.getPet())) {
+                result = true;
+            }
+        }
+
+        return result;
     }
 
     /**

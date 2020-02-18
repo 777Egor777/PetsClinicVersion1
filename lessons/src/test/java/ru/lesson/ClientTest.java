@@ -3,14 +3,12 @@ package ru.lesson;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class ClientTest {
 
     @Test
     public void getName() {
         Client client = new Client("Albert", new Cat("Murzik"));
-        Assert.assertEquals("Murzik", client.getName());
+        Assert.assertEquals("Albert", client.getName());
     }
 
     @Test
@@ -22,27 +20,16 @@ public class ClientTest {
 
     @Test
     public void getPet() {
-        Client client = new Client("Albert", new Dog("Bobik"));
-        Assert.assertEquals(true, client.getPet() instanceof Dog);
+        Dog bobik = new Dog("Bobik");
+        Client client = new Client("Albert", bobik);
+        Assert.assertEquals(bobik, client.getPet());
     }
 
     @Test
     public void setPet() {
         Client client = new Client("Albert", new Dog("Bobik"));
-        client.setPet(new Popinjay("Popka"));
-        Assert.assertEquals("Popka", client.getPet().getName());
-    }
-
-    @Test
-    public void testGetPet() {
-        Client client = new Client("Albert", new Dog("Bobik"));
-        Assert.assertEquals("Bobik", client.getPet().getName());
-    }
-
-    @Test
-    public void testSetPet() {
-        Client client = new Client("Albert", new Dog("Bobik"));
-        client.setPet(new Popinjay("Popka"));
-        Assert.assertEquals(true, client.getPet() instanceof Popinjay);
+        Popinjay popka = new Popinjay("Popka");
+        client.setPet(popka);
+        Assert.assertEquals(popka, client.getPet());
     }
 }
